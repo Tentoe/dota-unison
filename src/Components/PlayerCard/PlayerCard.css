@@ -1,0 +1,33 @@
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.outer-card{
+
+}
+.inner-card{
+
+}
+.outer-player-card {
+  padding: 3px;
+}
+
+.inner-player-card {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+
+.player-name {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
