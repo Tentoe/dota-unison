@@ -1,2 +1,2 @@
-# dota-unison
+# dotally
 A tool to get the most out of your teammates.
