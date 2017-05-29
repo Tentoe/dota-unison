@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'flag-icon-css/css/flag-icon.css';
 import './PlayerCard.css';
 // import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
-
-function getFlagClass(cc) {
-  return `flag-icon flag-icon-${cc.toLowerCase()}`;
-}
+import PlayerInfo from './PlayerInfo';
 
 function PlayerCard(props) {
   const player = props.player;
@@ -16,7 +12,7 @@ function PlayerCard(props) {
       <div className="inner-player-card">
         <ul>
           <li className="player-name">{player.name}</li>
-          <li><span className={getFlagClass(player.country)} /></li>
+          <li ><PlayerInfo player={player} /></li>
         </ul>
       </div>
     </div>

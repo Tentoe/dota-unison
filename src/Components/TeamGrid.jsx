@@ -8,7 +8,8 @@ function TeamGrid() {
   const player = {
     name: 'Tentoe',
     mmr: 3000,
-    country: 'DE' };
+    countryCode: 'DE',
+    avatarUrl: 'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/9a/9a5690fadc8218014d0710c6ad4a9656b7a43683_full.jpg' };
   const players = [player, player, player, player, player];
   return (
     <div className="container-fluid">

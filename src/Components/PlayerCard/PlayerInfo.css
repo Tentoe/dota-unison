@@ -1,0 +1,21 @@
+.avatar-block {
+  position: relative;
+}
+
+.avatar {
+  height: 75px;
+  width: 75px;
+}
+
+.flag-item {
+  width: 28px;
+  height: 21px;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+
+}
+
+.rounded {
+  border-radius: 5px;
+}
