@@ -16,13 +16,13 @@ function PlayerCard(props) {
       );
   return (
     <div className="col-md-2 outer-player-card">
-      <div className="inner-player-card">
-        <ul>
+      <div className="inner-player-card border-item">
+        <div>
           <CustomOverlayTrigger overlay={namePopover}>
-            <li className="player-name">{player.name}</li>
+            <div className="player-name flex-item overflow-item">{player.name}</div>
           </CustomOverlayTrigger>
-          <li ><PlayerInfo player={player} /></li>
-        </ul>
+          <div className="flex-item"><PlayerInfo player={player} /></div>
+        </div>
       </div>
     </div>
   );

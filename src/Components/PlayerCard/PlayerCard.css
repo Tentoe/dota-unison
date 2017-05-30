@@ -1,33 +1,37 @@
-ul {
-  padding: 0;
+/* General */
+
+.overflow-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-li {
-  list-style-type: none;
+.flex-item {
+  flex: 1;
+  min-width: 0;
 }
 
-.outer-card{
-
+.border-item{
+  border-width: 1px;
+  border-style: solid;
 }
-.inner-card{
 
-}
+/* PlayerCard */
+
 .outer-player-card {
   padding: 3px;
 }
 
 .inner-player-card {
-  border-width: 1px;
-  border-style: solid;
+  display: flex;
+  flex-flow: column nowrap;
   border-radius: 10px;
   background-color: lightgrey;
 }
 
 .player-name {
+
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
