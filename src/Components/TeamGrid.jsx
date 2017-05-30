@@ -9,7 +9,11 @@ function TeamGrid() {
     name: 'Tentoe',
     mmr: 3000,
     countryCode: 'DE',
-    avatarUrl: 'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/9a/9a5690fadc8218014d0710c6ad4a9656b7a43683_full.jpg' };
+    avatarUrl: 'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/9a/9a5690fadc8218014d0710c6ad4a9656b7a43683_full.jpg',
+    realname: 'this is my real name its a very long one',
+    timecreated: 12.3,
+    friendCount: 13,
+  };
   const players = [player, player, player, player, player];
   return (
     <div className="container-fluid">

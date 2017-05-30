@@ -1,0 +1,9 @@
+.avatar-block {
+  position: relative;
+  float: left;
+}
+
+.avatar {
+  height: 75px;
+  width: 75px;
+}
