@@ -6,6 +6,7 @@ import './PlayerCard.css';
 
 import PlayerInfo from './PlayerInfo';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
+import PerformanceInfo from './PerformanceInfo';
 
 function PlayerCard(props) {
   const player = props.player;
@@ -21,7 +22,8 @@ function PlayerCard(props) {
           <CustomOverlayTrigger overlay={namePopover}>
             <div className="player-name flex-item overflow-item">{player.name}</div>
           </CustomOverlayTrigger>
-          <div className="flex-item"><PlayerInfo player={player} /></div>
+          <PlayerInfo player={player} />
+          <PerformanceInfo player={player} />
         </div>
       </div>
     </div>
