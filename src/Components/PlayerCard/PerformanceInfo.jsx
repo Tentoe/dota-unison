@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import InfoBubble from './InfoBubble';
+import PerformanceBubble from './PerformanceBubble';
 
 function PerformanceInfo(props) {
   const player = props.player;
 
 
   return (
-    <div className="rounded border-item" >
-      <InfoBubble
+    <div >
+      <PerformanceBubble
+        topValue={`${player.mmr}`}
+        bottomValue={`${player.playtime}`}
+        topLabel={'MMR'}
+        bottomLabel={'Playtime'}
+      />
+      <PerformanceBubble
         topValue={`${player.mmr}`}
         bottomValue={`${player.playtime}`}
         topLabel={'MMR'}

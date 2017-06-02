@@ -7,14 +7,18 @@ import './PlayerCard.css';
 import PlayerInfo from './PlayerInfo';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 import PerformanceInfo from './PerformanceInfo';
+import MostPlayedTable from './MostPlayedTable';
+import BehavioralInfo from './BehavioralInfo';
+import Comment from './Comment';
 
 function PlayerCard(props) {
   const player = props.player;
   const namePopover = (
-    <Popover title="Player Name" >
-      <strong>{player.name} Playername and something like links to dotabuff and opendota</strong>
+    <Popover title="Player Name">
+      <strong>{player.name}
+        Playername and something like links to dotabuff and opendota</strong>
     </Popover>
-      );
+  );
   return (
     <div className="col-md-2 outer-player-card">
       <div className="inner-player-card border-item">
@@ -24,6 +28,9 @@ function PlayerCard(props) {
           </CustomOverlayTrigger>
           <PlayerInfo player={player} />
           <PerformanceInfo player={player} />
+          <MostPlayedTable />
+          <BehavioralInfo />
+          <Comment />
         </div>
       </div>
     </div>

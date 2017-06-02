@@ -22,6 +22,10 @@ function TeamGrid() {
         <div className="col-md-2">Team Stats</div>
         {players.map(p => (<PlayerCard player={p} />))}
       </div>
+      <div className="row" >
+        <div className="col-md-2">Team Stats2</div>
+        {players.map(p => (<PlayerCard player={p} />))}
+      </div>
     </div>
   );
 }
