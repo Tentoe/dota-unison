@@ -8,7 +8,7 @@ function PerformanceInfo(props) {
 
 
   return (
-    <div >
+    <div className="text-center">
       <PerformanceBubble
         topValue={`${player.mmr}`}
         bottomValue={`${player.playtime}`}

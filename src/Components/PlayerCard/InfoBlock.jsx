@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Popover } from 'react-bootstrap';
 
-import './Avatar.css';
+import './InfoBlock.css';
+
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 
 function InfoBlock(props) {
@@ -15,14 +16,14 @@ function InfoBlock(props) {
 
   return (
     <div className="info-block flex-item">
-      <div className="info-block-inner flex-item">
+      <div className="info-block-inner flex-item medium-size-font">
 
         <CustomOverlayTrigger overlay={realnamePopover}>
-          <div className="overflow-item real-name">{props.realname}</div>
+          <div className="overflow-item">{props.realname}</div>
         </CustomOverlayTrigger>
 
-        <span id="friend-glyph" className="glyphicon glyphicon-user" />{props.friendCount}
-        <img src={steamLogo} className="img-rounded steam-logo" alt="Avatar" />{`${props.timecreated}y`}
+        <span><span className="glyphicon glyphicon-user" />{props.friendCount}</span>
+        <span><img src={steamLogo} className="img-rounded info-block-steam-logo" alt="Avatar" />{`${props.timecreated}y`}</span>
 
       </div>
     </div>

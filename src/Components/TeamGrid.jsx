@@ -1,6 +1,5 @@
 import React from 'react';
 import './TeamGrid.css';
-// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 import PlayerCard from './PlayerCard/PlayerCard';
 
@@ -11,7 +10,7 @@ function TeamGrid() {
     playtime: 2345,
     countryCode: 'DE',
     avatarUrl: 'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/9a/9a5690fadc8218014d0710c6ad4a9656b7a43683_full.jpg',
-    realname: 'this is my real name its a very long one',
+    realname: 'this is my',
     timecreated: 12.3,
     friendCount: 13,
   };

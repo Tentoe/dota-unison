@@ -5,19 +5,19 @@ import './BehavioralInfo.css';
 
 function BehavioralInfo() {
   return (
-    <div >
-      <div className="bubble-container">
-        <div className="bubble">
+    <div className="text-center">
+      <div className="behavioral-info-bubble-container">
+        <div className="behavioral-info-bubble">
           3999
         </div>
-        <div className="bubble-label text-muted text-center">Behavioral Score</div>
+        <div className="behavioral-info-bubble-label text-muted text-center">Behavioral Score</div>
       </div>
 
-      <div className="bubble-container">
-        <div className="bubble">
+      <div className="behavioral-info-bubble-container">
+        <div className="behavioral-info-bubble">
           3999
         </div>
-        <div className="bubble-label text-muted text-center">Kharma</div>
+        <div className="behavioral-info-bubble-label text-muted text-center">Kharma</div>
       </div>
     </div>
 

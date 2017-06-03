@@ -12,7 +12,7 @@ function PlayerInfo(props) {
 
 
   return (
-    <div className="player-info flex-item rounded border-item">
+    <div className="player-info flex-item player-info-rounded border-item">
       <Avatar
         name={player.name}
         avatarUrl={player.avatarUrl}

@@ -22,13 +22,13 @@ function Avatar(props) {
       <CustomOverlayTrigger overlay={avatarPopover}>
         <img
           src={props.avatarUrl}
-          className="avatar rounded"
+          className="avatar player-info-rounded"
           alt={props.name}
         />
       </CustomOverlayTrigger>
 
       <CustomOverlayTrigger overlay={flagPopover}>
-        <span className={`flag-icon flag-icon-${props.countryCode.toLowerCase()} flag-item rounded`} />
+        <span className={`flag-icon flag-icon-${props.countryCode.toLowerCase()} avatar-flag player-info-rounded`} />
       </CustomOverlayTrigger>
 
 

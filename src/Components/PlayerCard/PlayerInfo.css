@@ -1,48 +1,11 @@
-/* General */
 
-.rounded {
+.player-info-rounded {
   border-radius: 5px;
 }
-
-/* PlayerInfo */
 
 .player-info {
   display: flex;
   flex-flow: row nowrap;
-  border-style: solid;
   margin: 10px;
   padding: 3px;
-}
-
-.flag-item {
-  width: 28px;
-  height: 21px;
-  position: absolute;
-  right: 10px;
-  bottom: 0px;
-}
-
-.steam-logo {
-  height: 16px;
-  width: 16px;
-  margin-top: -3px;
-  margin-left: 3px;
-}
-
-
-
-.real-name {
-  text-align: center;
-}
-
-.info-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-
-.info-block-inner {
-  text-align: center;
-
 }

@@ -5,17 +5,17 @@ import './PerformanceBubble.css';
 
 function PerformanceBubble(props) {
   return (
-    <div className="outer-info-bubble">
-      <div className="info-bubble-label text-muted text">
+    <div className="performance-bubble-outer">
+      <div className="performance-bubble-label text-muted small-size-font">
         {props.topLabel}
       </div>
-      <div className="info-bubble-top">
+      <div className="performance-bubble-top big-size-font">
         {props.topValue}
       </div>
-      <div className="info-bubble-bottom">
+      <div className="performance-bubble-bottom big-size-font">
         {props.bottomValue}
       </div>
-      <div className="info-bubble-label text-muted">
+      <div className="performance-bubble-label text-muted small-size-font">
         {props.bottomLabel}
       </div>
     </div>

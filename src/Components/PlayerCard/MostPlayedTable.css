@@ -1,20 +1,22 @@
-.table-container{
+.most-played-table-container {
   margin: 10px;
   padding: 3px;
+  border-radius: 5px;
 }
 
-.table {
+.most-played-table {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0px;
   text-align: left;
+  font-size: 12px;
 }
 
-tr > td:nth-of-type(2) ,tr > td:nth-of-type(3){
- text-align: center;
+.most-played-table>tbody>tr>td:nth-of-type(2), tr>td:nth-of-type(3) {
+  text-align: center;
 }
 
-.table > tbody > tr:first-child > td {
-    border: none;
+.most-played-table>tbody>tr:first-child>td {
+  border: none;
 }

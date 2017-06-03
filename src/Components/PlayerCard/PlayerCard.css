@@ -11,32 +11,46 @@
   min-width: 0;
 }
 
-.border-item{
+.border-item {
   border-width: 1px;
   border-style: solid;
 }
 
-.info-item{
+.info-item {
   margin: 10px;
   padding: 3px;
 }
 
-/* PlayerCard */
-
-.outer-player-card {
-  padding: 3px;
+.header-size {
+  font-size: 28px;
 }
 
-.inner-player-card {
+.big-size-font {
+  font-size: 22px;
+}
+
+.small-size-font {
+  font-size: 8px;
+}
+
+.medium-size-font {
+  font-size: 16px;
+}
+
+
+/* PlayerCard */
+
+.player-card-outer {
+  padding: 5px;
+}
+
+.player-card-inner {
   display: flex;
   flex-flow: column nowrap;
   border-radius: 10px;
   background-color: #f5f5f5;
 }
 
-.player-name {
-
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
+.player-card-name {
+    text-align: center;
 }

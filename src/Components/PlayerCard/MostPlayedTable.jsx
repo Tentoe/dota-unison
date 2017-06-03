@@ -6,9 +6,9 @@ import './MostPlayedTable.css';
 
 function MostPlayedTable() { // style={{ marginBottom: '0px' }}
   return (
-    <div className="table-container">
+    <div className="most-played-table-container border-item">
 
-      <Table className="table" responsive>
+      <Table className="most-played-table" condensed>
 
         <tbody>
           <tr>

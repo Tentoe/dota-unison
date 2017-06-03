@@ -4,7 +4,7 @@ import { OverlayTrigger } from 'react-bootstrap';
 
 function CustomOverlayTrigger(props) {
   return (
-    <OverlayTrigger trigger={['click']} rootClose placement="bottom" overlay={props.overlay}>
+    <OverlayTrigger trigger={['click']} placement="bottom" overlay={props.overlay}>
       {props.children}
     </OverlayTrigger>
   );

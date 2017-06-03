@@ -1,26 +1,25 @@
-div{
-  text-align: center;
+.performance-bubble-container{
+    text-align: center;
 }
 
-.outer-info-bubble {
+.performance-bubble-outer {
   display: inline-block;
-  font-size: 25px;
   margin-left: 20px;
   margin-right : 20px;
+    text-align: center;
 }
 
-.info-bubble-label {
+.performance-bubble-label {
   margin: 0;
-  font-size: 10px;
 }
 
-.info-bubble-top {
+.performance-bubble-top {
   border-radius: 10px 10px 0px 0px;
   background-color: lightblue;
   padding: 0 10px 0 10px;
 }
 
-.info-bubble-bottom {
+.performance-bubble-bottom {
   border-radius: 0px 0px 10px 10px;
   background-color: yellow;
   padding: 0 10px 0 10px;
