@@ -14,9 +14,8 @@ import Comment from './Comment';
 function PlayerCard(props) {
   const player = props.player;
   const namePopover = (
-    <Popover title="Player Name">
-      <strong>{player.name}
-        Playername and something like links to dotabuff and opendota</strong>
+    <Popover title="Player's Personaname">
+      <strong>{player.personaname}</strong>
     </Popover>
   );
   return (
@@ -25,7 +24,7 @@ function PlayerCard(props) {
         <div>
           <CustomOverlayTrigger overlay={namePopover} >
             <div className="player-card-name header-size flex-item overflow-item">
-              {player.name}
+              {player.personaname}
             </div>
           </CustomOverlayTrigger>
           <PlayerInfo player={player} />

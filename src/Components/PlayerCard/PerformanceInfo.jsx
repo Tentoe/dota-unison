@@ -1,23 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import PerformanceBubble from './PerformanceBubble';
 
-function PerformanceInfo(props) {
-  const player = props.player;
-
-
+function PerformanceInfo() {
   return (
     <div className="text-center">
       <PerformanceBubble
-        topValue={`${player.mmr}`}
-        bottomValue={`${player.playtime}`}
+        topValue={`${2222}`}
+        bottomValue={`${3333}`}
         topLabel={'MMR'}
         bottomLabel={'Playtime'}
       />
       <PerformanceBubble
-        topValue={`${player.mmr}`}
-        bottomValue={`${player.playtime}`}
+        topValue={`${2222}`}
+        bottomValue={`${3333}`}
         topLabel={'MMR'}
         bottomLabel={'Playtime'}
       />
@@ -25,8 +21,5 @@ function PerformanceInfo(props) {
   );
 }
 
-PerformanceInfo.propTypes = {
-  player: PropTypes.shape({}).isRequired,
-};
 
 export default PerformanceInfo;

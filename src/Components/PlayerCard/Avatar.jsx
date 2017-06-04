@@ -28,7 +28,9 @@ function Avatar(props) {
       </CustomOverlayTrigger>
 
       <CustomOverlayTrigger overlay={flagPopover}>
-        <span className={`flag-icon flag-icon-${props.countryCode.toLowerCase()} avatar-flag player-info-rounded`} />
+        {props.countryCode ?
+          <span className={`flag-icon flag-icon-${props.countryCode.toLowerCase()} avatar-flag player-info-rounded`} /> :
+          <span className="avatar-white-flag avatar-flag player-info-rounded" />}
       </CustomOverlayTrigger>
 
 

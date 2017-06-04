@@ -14,14 +14,14 @@ function PlayerInfo(props) {
   return (
     <div className="player-info flex-item player-info-rounded border-item">
       <Avatar
-        name={player.name}
-        avatarUrl={player.avatarUrl}
-        countryCode={player.countryCode}
+        name={player.personaname}
+        avatarUrl={player.avatar}
+        countryCode={player.loccountrycode}
       />
       <InfoBlock
         realname={player.realname}
         timecreated={player.timecreated}
-        friendCount={player.friendCount}
+        friendCount={12}
       />
 
     </div>
