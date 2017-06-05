@@ -7,15 +7,15 @@ import CustomOverlayTrigger from './CustomOverlayTrigger';
 
 function Avatar(props) {
   const avatarPopover = (
-    <Popover title="Popover for Avatar">
-      <strong>Holy guacamole!</strong> Check this info.
-      </Popover>
-      );
+    <Popover >
+      <img src={props.avatarFullUrl} alt="full Avatar" />
+    </Popover>
+        );
   const flagPopover = (
     <Popover title="Popover for Flag">
       <strong>Probably on which servers they played</strong> Check this info.
-          </Popover>
-          );
+        </Popover>
+        );
   return (
     <div className="media-left avatar-block" >
 
@@ -40,6 +40,7 @@ function Avatar(props) {
 
 Avatar.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
+  avatarFullUrl: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   countryCode: PropTypes.string.isRequired,
 };

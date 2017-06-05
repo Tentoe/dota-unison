@@ -15,7 +15,7 @@ function PlayerCard(props) {
   const player = props.player;
   const namePopover = (
     <Popover title="Player's Personaname">
-      <strong>{player.personaname}</strong>
+      <div className="text-center"><strong>{player.personaname}</strong></div>
     </Popover>
   );
   return (
@@ -27,7 +27,15 @@ function PlayerCard(props) {
               {player.personaname}
             </div>
           </CustomOverlayTrigger>
-          <PlayerInfo player={player} />
+          <PlayerInfo
+            name={player.personaname}
+            realname={player.realname}
+            avatarUrl={player.avatar}
+            avatarFullUrl={player.avatarfull}
+            countryCode={player.loccountrycode}
+            timecreated={player.timecreated}
+            friendCount={12}
+          />
           <PerformanceInfo player={player} />
           <MostPlayedTable />
           <BehavioralInfo />

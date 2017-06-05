@@ -8,20 +8,18 @@ import Avatar from './Avatar';
 import InfoBlock from './InfoBlock';
 
 function PlayerInfo(props) {
-  const player = props.player;
-
-
   return (
     <div className="player-info flex-item player-info-rounded border-item">
       <Avatar
-        name={player.personaname}
-        avatarUrl={player.avatar}
-        countryCode={player.loccountrycode}
+        name={props.name}
+        avatarUrl={props.avatarUrl}
+        avatarFullUrl={props.avatarFullUrl}
+        countryCode={props.countryCode}
       />
       <InfoBlock
-        realname={player.realname}
-        timecreated={player.timecreated}
-        friendCount={12}
+        realname={props.realname}
+        timecreated={props.timecreated}
+        friendCount={props.friendCount}
       />
 
     </div>
@@ -29,7 +27,13 @@ function PlayerInfo(props) {
 }
 
 PlayerInfo.propTypes = {
-  player: PropTypes.shape({}).isRequired,
+  name: PropTypes.string.isRequired,
+  avatarFullUrl: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string.isRequired,
+  countryCode: PropTypes.string.isRequired,
+  realname: PropTypes.string.isRequired,
+  timecreated: PropTypes.number.isRequired,
+  friendCount: PropTypes.number.isRequired,
 };
 
 export default PlayerInfo;
