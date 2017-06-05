@@ -7,17 +7,21 @@ const { Gaze } = remote.require('gaze');
 const fs = remote.require('fs-extra');
 // FIXME: dynamic location
 
+
+const serverLogFile = '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
+const loopback = /.*loopback.*/;
 let gaze = null;
 
 function split(data) {
   return data.toString().split(/\r?\n|\r/);
 }
 
-
-function findLine(lines, i = 1) { // last line is empty
-  if (lines.length - 1 - i < 0) throw new Error('No valid line found in serverlog');
-  const line = lines[lines.length - 1 - i];
-  if (line.match(/.*loopback.*/)) return findLine(lines, i + 1);
+// FIXME: not the right behavior yet
+function findLine(lines, i = 0) {
+  const lineNr = i + 1;// last line is empty
+  if (lines.length - 1 - lineNr < 0) throw new Error('No valid line found in serverlog');
+  const line = lines[lines.length - 1 - lineNr];
+  if (line.match(loopback)) return findLine(lines, lineNr + 1);
   return line;
 }
 
@@ -53,7 +57,7 @@ function watch() {
   if (gaze) { gaze.close(); }
 
   return new Promise((resolve, reject) => {
-    gaze = new Gaze('/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt');
+    gaze = new Gaze(serverLogFile);
     gaze.on('changed', (path) => {
       fs.readFile(path)
       .then(split).then(findLine).then(extractGameData)
@@ -69,4 +73,16 @@ function unwatch() {
   gaze = null;
 }
 
-export { watch, unwatch };
+function filterLoopback(array) {
+  return array.filter(item => !(/.*loopback.*/.test(item)));
+}
+
+function readServerLog(line = 0) {
+  return fs.readFile(serverLogFile)
+  .then(split).then(filterLoopback)
+  .then(array => findLine(array, line))
+  .then(extractGameData);
+}
+
+
+export { watch, unwatch, readServerLog };

@@ -14,8 +14,9 @@ import Comment from './Comment';
 function PlayerCard(props) {
   const player = props.player;
   const namePopover = (
-    <Popover title="Player's Personaname">
+    <Popover title="Player's Name">
       <div className="text-center"><strong>{player.personaname}</strong></div>
+      <div className="text-center">{player.realname}</div>
     </Popover>
   );
   return (
@@ -30,8 +31,7 @@ function PlayerCard(props) {
           <PlayerInfo
             name={player.personaname}
             realname={player.realname}
-            avatarUrl={player.avatar}
-            avatarFullUrl={player.avatarfull}
+            avatarUrl={player.avatarfull}
             countryCode={player.loccountrycode}
             timecreated={player.timecreated}
             friendCount={12}

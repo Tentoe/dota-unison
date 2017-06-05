@@ -11,6 +11,7 @@
     "flag-icon-css": "^2.8.0",
     "fs-extra": "^3.0.1",
     "gaze": "^1.1.2",
+    "i18n-iso-countries": "^1.11.1",
     "jsbn": "^1.1.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",

@@ -4,7 +4,7 @@ import './TeamGrid.css';
 import PlayerCard from './PlayerCard/PlayerCard';
 import Loading from './Loading';
 
-import { getHeroList, listenForNewGame } from '../api/playerCardAPI';
+import { readLastGame } from '../api/api';
 
 class TeamGrid extends React.Component {
   constructor(props) {
@@ -16,25 +16,16 @@ class TeamGrid extends React.Component {
   }
 
   componentDidMount() {
-    const player = {
-      name: 'Tentoe',
-      mmr: 3000,
-      playtime: 2345,
-      countryCode: 'DE',
-      avatarUrl: 'http://cdn.edgecast.steamstatic.com/steamcommunity/public/images/avatars/9a/9a5690fadc8218014d0710c6ad4a9656b7a43683_full.jpg',
-      realname: 'this is my',
-      timecreated: 12.3,
-      friendCount: 13,
-    };
-
   //  getHeroList().then(console.log);
-    listenForNewGame().then(this.updatePlayers);
+    const promises = readLastGame();
+    promises.summaries.then(this.updatePlayers);
+    promises.summaries.then(console.log);
+    promises.vacBans.then(console.log);
   }
   newGame(players) {
     this.setState(() => ({ players }));
   }
   updatePlayers(players) {
-    console.log(players);
     this.setState(() => ({
       players,
     }));

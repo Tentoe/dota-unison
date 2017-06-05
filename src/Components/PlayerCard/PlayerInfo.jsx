@@ -14,10 +14,9 @@ function PlayerInfo(props) {
         name={props.name}
         avatarUrl={props.avatarUrl}
         avatarFullUrl={props.avatarFullUrl}
-        countryCode={props.countryCode}
+        countryCode={props.countryCode || 'unknown'}
       />
       <InfoBlock
-        realname={props.realname}
         timecreated={props.timecreated}
         friendCount={props.friendCount}
       />
@@ -31,7 +30,6 @@ PlayerInfo.propTypes = {
   avatarFullUrl: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   countryCode: PropTypes.string.isRequired,
-  realname: PropTypes.string.isRequired,
   timecreated: PropTypes.number.isRequired,
   friendCount: PropTypes.number.isRequired,
 };

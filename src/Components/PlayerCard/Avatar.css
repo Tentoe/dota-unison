@@ -8,7 +8,7 @@
   width: 60px;
 }
 
-.avatar-flag{
+.avatar-flag {
   width: 28px;
   height: 21px;
   position: absolute;
@@ -16,6 +16,6 @@
   bottom: 0px;
 }
 
-.avatar-white-flag{
-  background-color: white;
+.avatar-large-flag {
+  width: 150px;
 }
