@@ -38,8 +38,15 @@
 // const countries = require('i18n-iso-countries');
 //
 // console.log(countries.getName('us', 'en'));
+//
+// const prom = Promise.resolve(234);
+//
+// prom.then(i => i + 2).then(console.log);
+// prom.then(console.log);
+//
 
-const prom = Promise.resolve(234);
 
-prom.then(i => i + 2).then(console.log);
-prom.then(console.log);
+const obj = Object.assign({}, null, { some: 'thing' });
+
+
+console.log(obj);
