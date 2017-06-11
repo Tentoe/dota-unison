@@ -1,4 +1,4 @@
-import unknown from './svg/unknown.svg';
+import unknown from './unknown.svg';
 
 function importAll(r) {
   return r.keys().reduce((acc, val) => {
