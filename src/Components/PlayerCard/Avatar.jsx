@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Popover } from 'react-bootstrap';
 
 import countries from 'i18n-iso-countries';
-import flags from '../../flags/flags';
+import flags from '../../flags/';
 import './Avatar.css';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 

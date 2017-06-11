@@ -1,3 +1,5 @@
+import unknown from './svg/unknown.svg';
+
 function importAll(r) {
   return r.keys().reduce((acc, val) => {
     const match = /\.\/(.*)\.svg/.exec(val);
@@ -5,4 +7,7 @@ function importAll(r) {
   }, {});
 }
 
-export default importAll(require.context('./svg/', false, /\.svg$/));
+
+const flags = importAll(require.context('svg-country-flags/svg', false, /\.svg$/));
+
+export default { ...flags, unknown };
