@@ -45,8 +45,9 @@
 // prom.then(console.log);
 //
 
-
-const obj = Object.assign({}, null, { some: 'thing' });
-
-
-console.log(obj);
+//
+// const obj = Object.assign({}, null, { some: 'thing' });
+//
+//
+// console.log(obj);
+//

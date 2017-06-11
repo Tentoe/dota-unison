@@ -10,12 +10,12 @@ import CustomOverlayTrigger from './CustomOverlayTrigger';
 function Avatar(props) {
   const flag = flags[props.countryCode.toLowerCase()] || flags.unknown;
   const avatarPopover = (
-    <Popover >
+    <Popover id="avatarPopoverID">
       <img src={props.avatarUrl} alt="full Avatar" />
     </Popover>
   );
   const flagPopover = (
-    <Popover title="Popover for Flag">
+    <Popover id="avatarflagPopoverID" title="Popover for Flag">
       <div><img src={flag} alt="flag" className="avatar-large-flag" /></div>
       <strong>{countries.getName(props.countryCode, 'en')}</strong>
 
