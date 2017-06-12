@@ -17,7 +17,14 @@ import './index.css';
 const { remote } = window.require('electron');
 const axios = remote.require('axios');
 
-const clients = { steam: { client: axios.create({ baseURL: 'https://api.steampowered.com' }) } };
+const clients = {
+  steam: {
+    client: axios.create({ baseURL: 'https://api.steampowered.com' }),
+  },
+  openDota: {
+    client: axios.create({ baseURL: 'https://api.opendota.com' }),
+  },
+};
 
 const middleware = applyMiddleware(thunk, multiClientMiddleware(clients), logger);
 

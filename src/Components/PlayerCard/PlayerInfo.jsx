@@ -16,8 +16,7 @@ function PlayerInfo(props) {
         countryCode={props.countryCode}
       />
       <InfoBlock
-        timecreated={props.timecreated}
-        friendCount={props.friendCount}
+        id={props.id}
       />
 
     </div>
@@ -27,11 +26,10 @@ PlayerInfo.defaultProps = {
   countryCode: 'unknown',
 };
 PlayerInfo.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   countryCode: PropTypes.string,
-  timecreated: PropTypes.number.isRequired,
-  friendCount: PropTypes.number.isRequired,
 };
 
 export default PlayerInfo;

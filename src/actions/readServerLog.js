@@ -1,15 +1,16 @@
 import { BigInteger } from 'jsbn';
 
-import { updateSummaries } from './';
+import { fetchSummaries, fetchVAC, fetchFriendlist } from './';
 
 const { remote } = window.require('electron');
 
 const fs = remote.require('fs-extra');
 
 
-export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
+export const UPDATE_PLAYERS = 'UPDATE_PLAYERS'; // also uncludes purging playerdata
 
-const serverLogFile = '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
+const serverLogFile = './test/server_log.test.txt';
+// '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
 // FIXME: dynamic location
 
 function splitLines(data) {
@@ -57,12 +58,20 @@ function getIdString(players) {
   return players.reduce(joinID64, '');
 }
 
+const fetchFriendLists = players => (dispatch) => {
+  players.forEach(p => dispatch(fetchFriendlist(p)));
+  // TODO dont fetch from private profiles
+};
+
 const updatePlayers = players => (dispatch) => {
   dispatch({
     type: UPDATE_PLAYERS,
     payload: players,
   });
-  dispatch(updateSummaries(getIdString(players)));
+  const idString = getIdString(players);
+  dispatch(fetchSummaries(idString));
+  dispatch(fetchVAC(idString));
+  dispatch(fetchFriendLists(players));
 };
 
 export const readServerLog = (line = 0) => (dispatch) => {

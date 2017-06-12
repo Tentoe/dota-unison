@@ -12,7 +12,7 @@ import MostPlayedTable from './MostPlayedTable';
 import BehavioralInfo from './BehavioralInfo';
 import Comment from './Comment';
 import Loading from '../Loading';
-import makeSummary from '../../selectors';
+import { makeSummary } from '../../selectors';
 
 const makeMapStateToProps = () => {
   const getSummary = makeSummary();
@@ -41,6 +41,7 @@ function PlayerCard(props) {
               </div>
             </CustomOverlayTrigger>
             <PlayerInfo
+              id={props.id}
               name={summary.personaname}
               realname={summary.realname}
               avatarUrl={summary.avatarfull}
