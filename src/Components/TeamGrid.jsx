@@ -32,7 +32,6 @@ class TeamGrid extends React.Component {
           <div className="col-md-2">{'stuff'}</div>
           {direPlayers.map(id => (<PlayerCard key={id} id={id} />))}
         </div>
-
       </div>
     );
   }

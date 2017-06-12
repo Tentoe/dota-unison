@@ -51,3 +51,4 @@
 //
 // console.log(obj);
 //
+if ({}) console.log('test');

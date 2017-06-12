@@ -16,7 +16,7 @@ function splitLines(data) {
   return data.toString().split(/\r?\n|\r/);
 }
 
-function filterLoopback(array) {
+function filterLoopback(array) { // TODO filter all non valid lines
   return array.filter(item => item && !(/.*loopback.*/.test(item)));
 }
 

@@ -12,14 +12,19 @@ import MostPlayedTable from './MostPlayedTable';
 import BehavioralInfo from './BehavioralInfo';
 import Comment from './Comment';
 import Loading from '../Loading';
+import makeSummary from '../../selectors';
 
-const mapStateToProps = (state, props) => ({
-  summary: state.summaries.find(item => item.steamid === state.players[props.id].steamID64),
-});
+const makeMapStateToProps = () => {
+  const getSummary = makeSummary();
+  const mapStateToProps = (state, props) => ({
+    todos: getSummary(state, props),
+  });
+  return mapStateToProps;
+};
 
 function PlayerCard(props) {
   const { summary } = props;
-  if (summary) {
+  if (summary && Object.keys(summary).length !== 0) {
     const namePopover = (
       <Popover id="playernamePopover" title="Player's Name">
         <div className="text-center"><strong>{summary.personaname}</strong></div>
@@ -59,8 +64,12 @@ function PlayerCard(props) {
       </div>
     </div>);
 }
+PlayerCard.defaultProps = {
+  summary: {},
+};
 PlayerCard.propTypes = {
   id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  summary: PropTypes.shape({}),
 };
 
-export default connect(mapStateToProps)(PlayerCard);
+export default connect(makeMapStateToProps)(PlayerCard);
