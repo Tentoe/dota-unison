@@ -17,7 +17,7 @@ import makeSummary from '../../selectors';
 const makeMapStateToProps = () => {
   const getSummary = makeSummary();
   const mapStateToProps = (state, props) => ({
-    todos: getSummary(state, props),
+    summary: getSummary(state, props),
   });
   return mapStateToProps;
 };
