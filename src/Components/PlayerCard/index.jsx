@@ -24,7 +24,7 @@ const makeMapStateToProps = () => {
 
 function PlayerCard(props) {
   const { summary } = props;
-  if (summary && Object.keys(summary).length !== 0) {
+  if (summary) {
     const namePopover = (
       <Popover id="playernamePopover" title="Player's Name">
         <div className="text-center"><strong>{summary.personaname}</strong></div>
@@ -49,7 +49,7 @@ function PlayerCard(props) {
               timecreated={summary.timecreated}
               friendCount={12}
             />
-            <PerformanceInfo />
+            <PerformanceInfo id={props.id} />
             <MostPlayedTable />
             <BehavioralInfo />
             <Comment />
@@ -66,7 +66,7 @@ function PlayerCard(props) {
     </div>);
 }
 PlayerCard.defaultProps = {
-  summary: {},
+  summary: null,
 };
 PlayerCard.propTypes = {
   id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types

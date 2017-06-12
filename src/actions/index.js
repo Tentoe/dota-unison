@@ -4,6 +4,7 @@ import key from '../keys';
 export const FETCH_VAC = 'FETCH_VAC';
 export const FETCH_SUMMARIES = 'FETCH_SUMMARIES';
 export const FETCH_FRIEDNLIST = 'FETCH_FRIEDNLIST';
+export const FETCH_PLAYEDGAMES = 'FETCH_PLAYEDGAMES';
 
 export const SUCCESS_SUFIX = '_SUCCESS';
 
@@ -40,6 +41,18 @@ export const fetchFriendlist = player => ({
     client: 'steam',
     request: {
       url: `/ISteamUser/GetFriendList/v0001/?key=${key}&steamid=${player.steamID64}`,
+    },
+  },
+  player,
+}
+);
+
+export const fetchPlayedGames = player => ({
+  type: FETCH_PLAYEDGAMES,
+  payload: {
+    client: 'steam',
+    request: {
+      url: `/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${key}&steamid=${player.steamID64}`,
     },
   },
   player,

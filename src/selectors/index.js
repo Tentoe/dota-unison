@@ -6,10 +6,10 @@ const getPlayerID = (state, props) =>
    '');// TODO is ? rally necessary?
 
 const getSummaries = state => state.summaries;
-
 const getVAC = state => state.vac;
-
 const getFriendLists = state => state.friendLists;
+const getPlayedGames = state => state.playedGames;
+
 
 export const makeSummary = () => createSelector(
   [getPlayerID, getSummaries],
@@ -22,3 +22,7 @@ export const makeVAC = () => createSelector(
 export const makeFriendList = () => createSelector(
   [getPlayerID, getFriendLists],
   (playerID, friendLists) => friendLists.find(item => item.steamID64 === playerID));
+
+export const makePlayedGames = () => createSelector(
+    [getPlayerID, getPlayedGames],
+    (playerID, playedGames) => playedGames.find(item => item.steamID64 === playerID));
