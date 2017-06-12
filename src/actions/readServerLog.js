@@ -1,6 +1,6 @@
 import { BigInteger } from 'jsbn';
 
-import { fetchSummaries, fetchVAC, fetchFriendlist, fetchPlayedGames } from './';
+import { fetchSummaries, fetchVAC, fetchFriendlist, fetchPlayedGames, fetchOpenDotaPlayer } from './';
 
 const { remote } = window.require('electron');
 
@@ -66,6 +66,10 @@ const fetchPlayedGamesPrivate = players => (dispatch) => {
   players.forEach(p => dispatch(fetchPlayedGames(p)));
   // TODO dont fetch from private profiles
 };
+const fetchOpenDotaPlayers = players => (dispatch) => {
+  players.forEach(p => dispatch(fetchOpenDotaPlayer(p)));
+  // TODO when to fetch?
+};
 
 const updatePlayers = players => (dispatch) => {
   dispatch({
@@ -77,6 +81,7 @@ const updatePlayers = players => (dispatch) => {
   dispatch(fetchVAC(idString));
   dispatch(fetchFriendLists(players));
   dispatch(fetchPlayedGamesPrivate(players));
+  dispatch(fetchOpenDotaPlayers(players));
 };
 
 export const readServerLog = (line = 0) => (dispatch) => {

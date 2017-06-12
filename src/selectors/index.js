@@ -9,6 +9,7 @@ const getSummaries = state => state.summaries;
 const getVAC = state => state.vac;
 const getFriendLists = state => state.friendLists;
 const getPlayedGames = state => state.playedGames;
+const getOpenDotaPlayers = state => state.openDotaPlayers;
 
 
 export const makeSummary = () => createSelector(
@@ -24,5 +25,9 @@ export const makeFriendList = () => createSelector(
   (playerID, friendLists) => friendLists.find(item => item.steamID64 === playerID));
 
 export const makePlayedGames = () => createSelector(
-    [getPlayerID, getPlayedGames],
-    (playerID, playedGames) => playedGames.find(item => item.steamID64 === playerID));
+  [getPlayerID, getPlayedGames],
+  (playerID, playedGames) => playedGames.find(item => item.steamID64 === playerID));
+
+export const makeOpenDotaPlayer = () => createSelector(
+  [getPlayerID, getOpenDotaPlayers],
+  (playerID, openDotaPlayer) => openDotaPlayer.find(item => item.steamID64 === playerID));
