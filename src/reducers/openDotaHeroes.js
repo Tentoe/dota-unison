@@ -8,7 +8,7 @@ const openDotaHeroes = (state = innitialState, action) => {
     case FETCH_OPENDOTAHEROES + SUCCESS_SUFIX:
       return [
         ...state,
-        { ...action.payload.data, steamID64: action.meta.previousAction.player.steamID64 },
+        { heroes: action.payload.data, steamID64: action.meta.previousAction.player.steamID64 },
       ];
     case UPDATE_PLAYERS:
       return innitialState;

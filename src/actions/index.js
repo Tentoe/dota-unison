@@ -2,6 +2,7 @@ import key from '../keys';
 
 
 export const FETCH_VAC = 'FETCH_VAC';
+export const FETCH_HEROES = 'FETCH_HEROES';
 export const FETCH_SUMMARIES = 'FETCH_SUMMARIES';
 export const FETCH_FRIEDNLIST = 'FETCH_FRIEDNLIST';
 export const FETCH_PLAYEDGAMES = 'FETCH_PLAYEDGAMES';
@@ -14,6 +15,17 @@ export const SUCCESS_SUFIX = '_SUCCESS';
 
 export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
 
+
+export const fetchHeroes = () => ({
+  type: FETCH_HEROES,
+  payload: {
+    client: 'steam',
+    request: {
+      url: `/IEconDOTA2_570/GetHeroes/v0001/?key=${key}&language=english`,
+    },
+  },
+}
+);
 
 export const fetchSummaries = idString => ({
   type: FETCH_SUMMARIES,

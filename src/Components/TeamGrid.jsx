@@ -5,7 +5,7 @@ import './TeamGrid.css';
 
 import PlayerCard from './PlayerCard/';
 
-
+import { fetchHeroes } from '../actions';
 import { readServerLog } from '../actions/readServerLog';
 
 
@@ -13,7 +13,7 @@ class TeamGrid extends React.Component {
 
 
   componentDidMount() {
-  // TODO  getHeroList().then(console.log);
+    this.props.dispatch(fetchHeroes());
     this.props.dispatch(readServerLog(0));
   }
 

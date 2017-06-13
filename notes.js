@@ -50,5 +50,6 @@
 //
 //
 // console.log(obj);
+// //
+// if ({}) console.log('test');
 //
-if ({}) console.log('test');

@@ -10,6 +10,11 @@ const getFromID64 = (playerID, stateProperty) =>
   stateProperty.find(item => item.steamID64 === playerID);
 
 
+export const getHeroes = createSelector(
+    state => state.heroes,
+    heroes => heroes,
+  );
+
 export const makeSummary = () => createSelector(
   [getPlayerID, state => state.summaries],
   (playerID, summaries) => summaries.find(item => item.steamid === playerID));

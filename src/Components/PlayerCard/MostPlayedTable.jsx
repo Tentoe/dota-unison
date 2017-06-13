@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+import { Table, Popover } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import './MostPlayedTable.css';
-import { makeOpenDotaHeroes } from '../../selectors';
+import { getHeroes, makeOpenDotaHeroes } from '../../selectors';
+import CustomOverlayTrigger from './CustomOverlayTrigger';
 
 
 const makeMapStateToProps = () => {
@@ -12,35 +13,59 @@ const makeMapStateToProps = () => {
 
   const mapStateToProps = (state, props) => ({
     openDotaHeroes: getOpenDotaHeroes(state, props),
+    heroes: getHeroes(state),
   });
   return mapStateToProps;
 };
 
-function MostPlayedTable(props) { // style={{ marginBottom: '0px' }}
-  const { openDotaHeroes } = props;
-  if (openDotaHeroes && openDotaHeroes['0'].games) {
+function MostPlayedTable(props) { // TODO style={{ marginBottom: '0px' }}
+  const { openDotaHeroes, heroes } = props;
+  if (openDotaHeroes && openDotaHeroes.heroes && openDotaHeroes.heroes[0].games) {
+    const center = { 'text-align': 'center' };
+    const heroesPopover = (
+      <Popover id="heroesPopoverID" >
+        <div className="most-played-popover">
+          <Table striped bordered condensed hover >
+            <thead>
+              <td style={center}>Hero</td>
+              <td>Games</td>
+              <td style={center}>Win</td>
+            </thead>
+            <tbody>
+              {openDotaHeroes.heroes.map(item => (item.games ?
+                <tr key={item.hero_id}>
+                  <td>{heroes[item.hero_id]}</td>
+                  <td>{item.games}</td>
+                  <td>{((item.win / item.games) * 100).toFixed(0)}%</td>
+                </tr>
+                  : null))}
+            </tbody>
+          </Table>
+        </div>
+      </Popover>);
     const heroArray = [
-      openDotaHeroes['0'],
-      openDotaHeroes['1'],
-      openDotaHeroes['2'],
+      openDotaHeroes.heroes[0],
+      openDotaHeroes.heroes[1],
+      openDotaHeroes.heroes[2],
     ];
     return (
-      <div className="most-played-table-container border-item">
+      <CustomOverlayTrigger overlay={heroesPopover}>
+        <div className="most-played-table-container border-item">
 
-        <Table className="most-played-table" condensed>
+          <Table className="most-played-table" condensed>
 
-          <tbody>
-            {heroArray.map(item => (
-              <tr key={item.hero_id}>
-                <td>{item.hero_id}</td>
-                <td>{item.games}</td>
-                <td>{((item.win / item.games) * 100).toFixed(0)}%</td>
-              </tr>
+            <tbody>
+              {heroArray.map(item => (
+                <tr key={item.hero_id}>
+                  <td>{heroes[item.hero_id]}</td>
+                  <td>{item.games}</td>
+                  <td>{((item.win / item.games) * 100).toFixed(0)}%</td>
+                </tr>
             ))}
-          </tbody>
-        </Table>
-      </div>
-
+            </tbody>
+          </Table>
+        </div>
+      </CustomOverlayTrigger>
     );
   }
   return (
@@ -48,19 +73,19 @@ function MostPlayedTable(props) { // style={{ marginBottom: '0px' }}
       <Table className="most-played-table" condensed >
         <tbody>
           <tr>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
           <tr>
-            <td>?</td>
-            <td>?</td>
-            <td>?</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
           </tr>
         </tbody>
       </Table>
@@ -70,9 +95,11 @@ function MostPlayedTable(props) { // style={{ marginBottom: '0px' }}
 }
 MostPlayedTable.defaultProps = {
   openDotaHeroes: null,
+  heroes: null,
 };
 MostPlayedTable.propTypes = {
   openDotaHeroes: PropTypes.shape({}),
+  heroes: PropTypes.shape({}),
 };
 
 export default connect(makeMapStateToProps)(MostPlayedTable);

@@ -20,3 +20,10 @@
 .most-played-table>tbody>tr:first-child>td {
   border: none;
 }
+
+
+
+.most-played-popover{
+  overflow-y: auto;
+  height: 230px;
+}
