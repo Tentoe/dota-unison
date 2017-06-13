@@ -6,6 +6,9 @@ export const FETCH_SUMMARIES = 'FETCH_SUMMARIES';
 export const FETCH_FRIEDNLIST = 'FETCH_FRIEDNLIST';
 export const FETCH_PLAYEDGAMES = 'FETCH_PLAYEDGAMES';
 export const FETCH_OPENDOTAPLAYER = 'FETCH_OPENDOTAPLAYER';
+export const FETCH_OPENDOTACOUNTS = 'FETCH_OPENDOTACOUNTS';
+export const FETCH_OPENDOTAHEROES = 'FETCH_OPENDOTAHEROES';
+
 
 export const SUCCESS_SUFIX = '_SUCCESS';
 
@@ -72,6 +75,33 @@ export const fetchOpenDotaPlayer = player => ({
   player,
 }
 );
+
+
+export const fetchOpenDotaCounts = player => ({
+  type: FETCH_OPENDOTACOUNTS,
+  payload: {
+    client: 'openDota',
+    request: {
+      url: `/api/players/${player.steamID3}/counts?date=91`, //TODO dynamic date
+    },
+  },
+  player,
+}
+);
+
+
+export const fetchOpenDotaHeroes = player => ({
+  type: FETCH_OPENDOTAHEROES,
+  payload: {
+    client: 'openDota',
+    request: {
+      url: `/api/players/${player.steamID3}/heroes?date=91`, //TODO dynamic date
+    },
+  },
+  player,
+}
+);
+
 // function getHeroList() {
 //   const encodedURI = window.encodeURI(`https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=${key}&language=english`);
 //   return axios.get(encodedURI).then(response => response.data.result.heroes);

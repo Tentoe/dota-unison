@@ -50,7 +50,7 @@ function PlayerCard(props) {
               friendCount={12}
             />
             <PerformanceInfo id={props.id} />
-            <MostPlayedTable />
+            <MostPlayedTable id={props.id} />
             <BehavioralInfo />
             <Comment />
           </div>

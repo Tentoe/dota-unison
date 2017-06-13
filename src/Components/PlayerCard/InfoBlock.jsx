@@ -65,7 +65,7 @@ const Private = () => {
 const getVACPopover = (vac) => {
   const keys = Object.keys(vac).slice(1);
   return (
-    <Popover id="vacPopoverID" title="VAC Data">
+    <Popover id="vacPopoverID" title="This player has a VAC ban">
       <Table striped bordered condensed hover >
         <tbody>
           {keys.map(key => (

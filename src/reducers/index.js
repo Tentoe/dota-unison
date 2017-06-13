@@ -5,6 +5,8 @@ import vac from './vac';
 import friendLists from './friendLists';
 import playedGames from './playedGames';
 import openDotaPlayers from './openDotaPlayers';
+import openDotaCounts from './openDotaCounts';
+import openDotaHeroes from './openDotaHeroes';
 
 const rootReducer = combineReducers({
   summaries,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   friendLists,
   playedGames,
   openDotaPlayers,
+  openDotaCounts,
+  openDotaHeroes,
 });
 
 export default rootReducer;
