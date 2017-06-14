@@ -32,7 +32,7 @@ function PlayerCard(props) {
       </Popover>
   );
     return (
-      <div className="col-md-2 player-card-outer">
+      <div className="col-lg-2 player-card-outer">
         <div className="player-card-inner border-item">
           <div>
             <CustomOverlayTrigger overlay={namePopover} >

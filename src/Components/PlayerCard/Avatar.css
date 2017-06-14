@@ -10,7 +10,6 @@
 
 .avatar-flag {
   width: 28px;
-  height: 21px;
   position: absolute;
   right: 10px;
   bottom: 0px;
@@ -18,4 +17,16 @@
 
 .avatar-large-flag {
   width: 150px;
+}
+
+.flag-table>*>*>*:nth-of-type(2), .flag-table>*>*>*:nth-of-type(3){
+  text-align: center;
+}
+
+.flag-table{
+  margin-top: 5px;
+}
+.avatar-country-name{
+  font-weight: bold;
+  text-align: center;
 }

@@ -12,6 +12,6 @@ const heroes = (state = innitialState, action) => {
       return state;
   }
 };
-
+// TODO make sure that is done before anything else
 
 export default heroes;

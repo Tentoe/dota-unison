@@ -13,7 +13,7 @@
   font-size: 12px;
 }
 
-.most-played-table>tbody>tr>td:nth-of-type(2), tr>td:nth-of-type(3) {
+.most-played-table>*>*>*:nth-of-type(2), .most-played-table>*>*>*:nth-of-type(3) {
   text-align: center;
 }
 

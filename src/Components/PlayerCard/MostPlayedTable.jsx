@@ -7,7 +7,6 @@ import './MostPlayedTable.css';
 import { getHeroes, makeOpenDotaHeroes } from '../../selectors';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 
-
 const makeMapStateToProps = () => {
   const getOpenDotaHeroes = makeOpenDotaHeroes();
 
@@ -21,21 +20,22 @@ const makeMapStateToProps = () => {
 function MostPlayedTable(props) { // TODO style={{ marginBottom: '0px' }}
   const { openDotaHeroes, heroes } = props;
   if (openDotaHeroes && openDotaHeroes.heroes && openDotaHeroes.heroes[0].games) {
-    const center = { 'text-align': 'center' };
     const heroesPopover = (
       <Popover id="heroesPopoverID" >
         <div className="most-played-popover">
           <Table striped bordered condensed hover >
             <thead>
-              <td style={center}>Hero</td>
-              <td>Games</td>
-              <td style={center}>Win</td>
+              <tr>
+                <th>Hero</th>
+                <th>Games</th>
+                <th>Win</th>
+              </tr>
             </thead>
             <tbody>
               {openDotaHeroes.heroes.map(item => (item.games ?
                 <tr key={item.hero_id}>
                   <td>{heroes[item.hero_id]}</td>
-                  <td>{item.games}</td>
+                  <td >{item.games}</td>
                   <td>{((item.win / item.games) * 100).toFixed(0)}%</td>
                 </tr>
                   : null))}

@@ -11,6 +11,7 @@ function PlayerInfo(props) {
   return (
     <div className="player-info flex-item player-info-rounded border-item">
       <Avatar
+        id={props.id}
         name={props.name}
         avatarUrl={props.avatarUrl}
         countryCode={props.countryCode}

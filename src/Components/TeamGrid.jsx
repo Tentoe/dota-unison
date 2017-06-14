@@ -25,11 +25,11 @@ class TeamGrid extends React.Component {
       <div className="container-fluid">
 
         <div className="row" >
-          <div className="col-md-2">Team Stats</div>
+          <div className="col-lg-2">Team Stats</div>
           {radiantPlayers.map(id => (<PlayerCard key={id} id={id} />))}
         </div>
         <div className="row" >
-          <div className="col-md-2">{'stuff'}</div>
+          <div className="col-lg-2">{'stuff'}</div>
           {direPlayers.map(id => (<PlayerCard key={id} id={id} />))}
         </div>
       </div>
