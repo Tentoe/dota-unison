@@ -1,28 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './UpDown.css';
+import DownIcon from 'react-icons/lib/io/arrow-down-b';
+import UpIcon from 'react-icons/lib/io/arrow-up-b';
 
 import { commentType } from '../../reducers/comments';
 
 
 function UpDown({ type, downClick, upClick }) {
-  const upArrow = type === commentType.POSITVE ? '▲' : '△';
-  const downArrow = type === commentType.NEGATIVE ? '▼' : '▽';
+  const upIconColor = type === commentType.POSITVE ? 'green' : 'lightgrey';
+  const downIconColor = type === commentType.NEGATIVE ? 'red' : 'lightgrey';
   return (
 
     <div className="comment-updown">
-      <span
-        className="comment-button comment-button-up"
-        role="button"
-        tabIndex={0}
-        onClick={upClick}
-      >{upArrow}</span>
-      <span
-        className="comment-button comment-button-down"
-        role="button"
-        tabIndex={0}
-        onClick={downClick}
-      >{downArrow}</span>
+
+      <UpIcon size={20} onClick={upClick} color={upIconColor} />
+
+      <DownIcon size={20} onClick={downClick} color={downIconColor} />
+
     </div>
 
 
@@ -30,7 +24,7 @@ function UpDown({ type, downClick, upClick }) {
 }
 
 UpDown.propTypes = {
-  type: PropTypes.oneOf(Object.keys(commentType)).isRequired,
+  type: PropTypes.oneOf(Object.keys(commentType).map(val => commentType[val])).isRequired,
   downClick: PropTypes.func.isRequired,
   upClick: PropTypes.func.isRequired,
 };

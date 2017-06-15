@@ -13,18 +13,22 @@ export const FETCH_OPENDOTAHEROES = 'FETCH_OPENDOTAHEROES';
 export const SUCCESS_SUFIX = '_SUCCESS';
 
 export const UPCLICK_COMMENT = 'UPCLICK_COMMENT';
-export const DOWNCLICK_COMMENT = 'UPCLICK_COMMENT';
+export const DOWNCLICK_COMMENT = 'DOWNCLICK_COMMENT';
 
 
-export const upClickComment = payload => ({
-  type: 'UPCLICK_COMMENT',
-  payload,
-});
+export const upClickComment = id => (dispatch, getState) => {
+  dispatch({
+    type: UPCLICK_COMMENT,
+    payload: getState().players[id].steamID64,
+  });
+};
 
-export const downClickComment = payload => ({
-  type: 'DOWNCLICK_COMMENT',
-  payload,
-});
+export const downClickComment = id => (dispatch, getState) => {
+  dispatch({
+    type: DOWNCLICK_COMMENT,
+    payload: getState().players[id].steamID64,
+  });
+};
 
 
 export const fetchHeroes = () => ({

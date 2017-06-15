@@ -93,11 +93,12 @@ const updatePlayers = players => (dispatch) => {
     type: UPDATE_PLAYERS,
     payload: players,
   });
-  // TODO get from database
+  // TODO get from database maybe restruct updatePlayers
   dispatch({
     type: UPDATE_COMMENTS,
     payload: players,
   });
+
   const idString = getIdString(players);
   dispatch(fetchSummaries(idString));
   dispatch(fetchVAC(idString));

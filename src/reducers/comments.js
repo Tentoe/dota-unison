@@ -16,24 +16,24 @@ const comments = (state = innitialState, { type, payload }) => {
       return payload.reduce((acc, player) =>
         Object.assign(acc, { [player.steamID64]: { type: commentType.NEUTRAL } }), {});
     case UPCLICK_COMMENT: {
-      const { steamID64 } = state.players[payload];
-      const oldState = state.comments[steamID64];
       return {
         ...state,
-        [steamID64]: {
-          ...oldState,
-          type: oldState.type === commentType.POSITVE ? commentType.NEUTRAL : commentType.POSITVE,
+        [payload]: {
+          ...state[payload],
+          type: state[payload].type === commentType.POSITVE ?
+            commentType.NEUTRAL :
+            commentType.POSITVE,
         },
       };
     }
     case DOWNCLICK_COMMENT: {
-      const { steamID64 } = state.players[payload];
-      const oldState = state.comments[steamID64];
       return {
         ...state,
-        [steamID64]: {
-          ...oldState,
-          type: oldState.type === commentType.NEGATIVE ? commentType.NEUTRAL : commentType.NEGATIVE,
+        [payload]: {
+          ...state[payload],
+          type: state[payload].type === commentType.NEGATIVE ?
+            commentType.NEUTRAL :
+            commentType.NEGATIVE,
         },
       };
     }
