@@ -12,7 +12,6 @@ function PlayerInfo(props) {
     <div className="player-info flex-item player-info-rounded border-item">
       <Avatar
         id={props.id}
-        name={props.name}
         avatarUrl={props.avatarUrl}
         countryCode={props.countryCode}
       />
@@ -28,7 +27,6 @@ PlayerInfo.defaultProps = {
 };
 PlayerInfo.propTypes = {
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
   avatarUrl: PropTypes.string.isRequired,
   countryCode: PropTypes.string,
 };

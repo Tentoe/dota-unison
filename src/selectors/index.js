@@ -27,6 +27,9 @@ export const makePlayedGames = () => createSelector(
 export const makeOpenDotaPlayer = () => createSelector(
   [getPlayerID64, state => state.openDotaPlayers], getFromID64);
 
+export const makeComment = () => createSelector(
+  [getPlayerID64, state => state.comments], getFromID64);
+
 export const makeOpenDotaCounts = () => createSelector(
   [getPlayerID64, state => state.openDotaCounts],
     (playerID64, openDotaCounts) => {

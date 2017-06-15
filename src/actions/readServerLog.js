@@ -15,7 +15,8 @@ const { remote } = window.require('electron');
 const fs = remote.require('fs-extra');
 
 
-export const UPDATE_PLAYERS = 'UPDATE_PLAYERS'; // also uncludes purging playerdata
+export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
+export const UPDATE_COMMENTS = 'UPDATE_COMMENTS';
 
 const serverLogFile = './test/server_log.test.txt';
 // '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
@@ -90,6 +91,11 @@ const fetchOpenDotaHeroesPrivate = players => (dispatch) => {
 const updatePlayers = players => (dispatch) => {
   dispatch({
     type: UPDATE_PLAYERS,
+    payload: players,
+  });
+  // TODO get from database
+  dispatch({
+    type: UPDATE_COMMENTS,
     payload: players,
   });
   const idString = getIdString(players);

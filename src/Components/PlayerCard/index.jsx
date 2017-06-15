@@ -42,17 +42,13 @@ function PlayerCard(props) {
             </CustomOverlayTrigger>
             <PlayerInfo
               id={props.id}
-              name={summary.personaname}
-              realname={summary.realname}
               avatarUrl={summary.avatarfull}
               countryCode={summary.loccountrycode}
-              timecreated={summary.timecreated}
-              friendCount={12}
             />
             <PerformanceInfo id={props.id} />
             <MostPlayedTable id={props.id} />
             <BehavioralInfo />
-            <Comment />
+            <Comment id={props.id} />
           </div>
         </div>
       </div>

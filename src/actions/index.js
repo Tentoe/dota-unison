@@ -10,10 +10,21 @@ export const FETCH_OPENDOTAPLAYER = 'FETCH_OPENDOTAPLAYER';
 export const FETCH_OPENDOTACOUNTS = 'FETCH_OPENDOTACOUNTS';
 export const FETCH_OPENDOTAHEROES = 'FETCH_OPENDOTAHEROES';
 
-
 export const SUCCESS_SUFIX = '_SUCCESS';
 
-export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
+export const UPCLICK_COMMENT = 'UPCLICK_COMMENT';
+export const DOWNCLICK_COMMENT = 'UPCLICK_COMMENT';
+
+
+export const upClickComment = payload => ({
+  type: 'UPCLICK_COMMENT',
+  payload,
+});
+
+export const downClickComment = payload => ({
+  type: 'DOWNCLICK_COMMENT',
+  payload,
+});
 
 
 export const fetchHeroes = () => ({

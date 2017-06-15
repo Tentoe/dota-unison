@@ -8,6 +8,7 @@ import openDotaPlayers from './openDotaPlayers';
 import openDotaCounts from './openDotaCounts';
 import openDotaHeroes from './openDotaHeroes';
 import heroes from './heroes';
+import comments from './comments';
 
 const rootReducer = combineReducers({
   summaries,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   openDotaCounts,
   openDotaHeroes,
   heroes,
+  comments,
 });
 
 export default rootReducer;

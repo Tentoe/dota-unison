@@ -20,7 +20,7 @@ const makeMapStateToProps = () => {
 };
 
 function Avatar(props) {
-  const { openDotaCounts, countryCode, avatarUrl, name } = props;
+  const { openDotaCounts, countryCode, avatarUrl } = props;
   const flag = flags[countryCode.toLowerCase()] || flags.unknown;
   const avatarPopover = (
     <Popover id="avatarPopoverID">
@@ -63,7 +63,7 @@ function Avatar(props) {
     <div className="media-left avatar-block">
 
       <CustomOverlayTrigger overlay={avatarPopover}>
-        <img src={avatarUrl} className="avatar player-info-rounded" alt={name} />
+        <img src={avatarUrl} className="avatar player-info-rounded" alt="avatar" />
       </CustomOverlayTrigger>
 
       <CustomOverlayTrigger overlay={flagPopover}>
@@ -77,7 +77,6 @@ Avatar.defaultProps = {
 };
 Avatar.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   countryCode: PropTypes.string.isRequired,
   openDotaCounts: PropTypes.shape({}),
 };
