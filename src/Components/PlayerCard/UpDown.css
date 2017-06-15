@@ -1,0 +1,13 @@
+.comment-updown {
+}
+
+.comment-button-up {
+ margin-right: 1px;
+}
+
+.comment-button-down {
+ margin-right: 1px;
+}
+.comment-button:focus {
+  outline: none;
+}

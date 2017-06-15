@@ -1,11 +1,12 @@
+import { UPDATE_COMMENT, SUCCESS_SUFIX } from '../actions';
 import { UPDATE_PLAYERS } from '../actions/readServerLog';
-import { FETCH_OPENDOTACOUNTS, SUCCESS_SUFIX } from '../actions';
 
-const innitialState = {};
+const innitialState = [];
 
-const openDotaCounts = (state = innitialState, action) => {
+
+const comments = (state = innitialState, action) => {
   switch (action.type) {
-    case FETCH_OPENDOTACOUNTS + SUCCESS_SUFIX:
+    case UPDATE_COMMENT + SUCCESS_SUFIX:
       return {
         ...state,
         [action.meta.previousAction.player.steamID64]: action.payload.data,
@@ -17,4 +18,5 @@ const openDotaCounts = (state = innitialState, action) => {
   }
 };
 
-export default openDotaCounts;
+
+export default comments;

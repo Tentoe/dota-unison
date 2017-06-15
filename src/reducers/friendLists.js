@@ -1,18 +1,15 @@
 import { UPDATE_PLAYERS } from '../actions/readServerLog';
 import { FETCH_FRIEDNLIST, SUCCESS_SUFIX } from '../actions';
 
-const innitialState = [];
+const innitialState = {};
 
 const friendLists = (state = innitialState, action) => {
   switch (action.type) {
     case FETCH_FRIEDNLIST + SUCCESS_SUFIX:
-      {
-        const fl = {
-          steamID64: action.meta.previousAction.player.steamID64,
-          friends: action.payload.data.friendslist.friends,
-        };
-        return [...state, fl];
-      }
+      return {
+        ...state,
+        [action.meta.previousAction.player.steamID64]: action.payload.data.friendslist.friends,
+      };
     case UPDATE_PLAYERS:
       return innitialState;
     default:

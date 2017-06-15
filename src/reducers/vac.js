@@ -1,13 +1,15 @@
 import { FETCH_VAC, SUCCESS_SUFIX } from '../actions';
 import { UPDATE_PLAYERS } from '../actions/readServerLog';
 
-const innitialState = [];
+const innitialState = {};
 
 
 const summaries = (state = innitialState, action) => {
   switch (action.type) {
     case FETCH_VAC + SUCCESS_SUFIX:
-      return action.payload.data.players;
+      return action.payload.data.players
+      .reduce((acc, vac) =>
+        ({ ...acc, [vac.SteamId]: vac }), {});
     case UPDATE_PLAYERS:
       return innitialState;
     default:

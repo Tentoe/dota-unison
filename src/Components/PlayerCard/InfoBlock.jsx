@@ -87,7 +87,7 @@ function InfoBlock(props) {
     <div className="info-block flex-item">
       <div className="info-block-inner flex-item medium-size-font">
         {summary.communityvisibilitystate === 3 ?
-          <TopLine friends={friendList.friends} timecreated={summary.timecreated} /> :
+          <TopLine friends={friendList} timecreated={summary.timecreated} /> :
           <Private />}
 
         <div>{vac && vac.NumberOfVACBans ?
@@ -103,15 +103,15 @@ function InfoBlock(props) {
   );
 }
 InfoBlock.defaultProps = {
-  vac: {},
-  summary: {},
-  friendList: {},
+  vac: null,
+  summary: null,
+  friendList: null,
 };
 InfoBlock.propTypes = {
   id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
   vac: PropTypes.shape({}),
   summary: PropTypes.shape({}),
-  friendList: PropTypes.shape({}),
+  friendList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 export default connect(makeMapStateToProps)(InfoBlock);

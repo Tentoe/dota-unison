@@ -19,7 +19,7 @@ const makeMapStateToProps = () => {
 
 function MostPlayedTable(props) { // TODO style={{ marginBottom: '0px' }}
   const { openDotaHeroes, heroes } = props;
-  if (openDotaHeroes && openDotaHeroes.heroes && openDotaHeroes.heroes[0].games) {
+  if (openDotaHeroes && openDotaHeroes[0].games) {
     const heroesPopover = (
       <Popover id="heroesPopoverID" >
         <div className="most-played-popover">
@@ -32,7 +32,7 @@ function MostPlayedTable(props) { // TODO style={{ marginBottom: '0px' }}
               </tr>
             </thead>
             <tbody>
-              {openDotaHeroes.heroes.map(item => (item.games ?
+              {openDotaHeroes.map(item => (item.games ?
                 <tr key={item.hero_id}>
                   <td>{heroes[item.hero_id]}</td>
                   <td >{item.games}</td>
@@ -44,9 +44,9 @@ function MostPlayedTable(props) { // TODO style={{ marginBottom: '0px' }}
         </div>
       </Popover>);
     const heroArray = [
-      openDotaHeroes.heroes[0],
-      openDotaHeroes.heroes[1],
-      openDotaHeroes.heroes[2],
+      openDotaHeroes[0],
+      openDotaHeroes[1],
+      openDotaHeroes[2],
     ];
     return (
       <CustomOverlayTrigger overlay={heroesPopover}>
@@ -98,7 +98,7 @@ MostPlayedTable.defaultProps = {
   heroes: null,
 };
 MostPlayedTable.propTypes = {
-  openDotaHeroes: PropTypes.shape({}),
+  openDotaHeroes: PropTypes.arrayOf(PropTypes.shape({})),
   heroes: PropTypes.shape({}),
 };
 

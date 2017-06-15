@@ -6,7 +6,7 @@ const innitialState = [];
 const players = (state = innitialState, action) => {
   switch (action.type) {
     case UPDATE_PLAYERS:
-      return action.payload; // TODO delete other player data in middleware
+      return action.payload;
     default:
       return state;
   }

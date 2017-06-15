@@ -1,14 +1,11 @@
 import { createSelector } from 'reselect';
 
-const getPlayerID = (state, props) =>
+const getPlayerID64 = (state, props) =>
  (state.players[props.id] ?
    state.players[props.id].steamID64 :
    '');// TODO is ? rally necessary?
 
-
-const getFromID64 = (playerID, stateProperty) =>
-  stateProperty.find(item => item.steamID64 === playerID);
-
+const getFromID64 = (playerID64, paticularItem) => paticularItem[playerID64];
 
 export const getHeroes = createSelector(
     state => state.heroes,
@@ -16,26 +13,24 @@ export const getHeroes = createSelector(
   );
 
 export const makeSummary = () => createSelector(
-  [getPlayerID, state => state.summaries],
-  (playerID, summaries) => summaries.find(item => item.steamid === playerID));
+  [getPlayerID64, state => state.summaries], getFromID64);
 
 export const makeVAC = () => createSelector(
-  [getPlayerID, state => state.vac],
-  (playerID, vac) => vac.find(item => item.SteamId === playerID));
+  [getPlayerID64, state => state.vac], getFromID64);
 
 export const makeFriendList = () => createSelector(
-  [getPlayerID, state => state.friendLists], getFromID64);
+  [getPlayerID64, state => state.friendLists], getFromID64);
 
 export const makePlayedGames = () => createSelector(
-  [getPlayerID, state => state.playedGames], getFromID64);
+  [getPlayerID64, state => state.playedGames], getFromID64);
 
 export const makeOpenDotaPlayer = () => createSelector(
-  [getPlayerID, state => state.openDotaPlayers], getFromID64);
+  [getPlayerID64, state => state.openDotaPlayers], getFromID64);
 
 export const makeOpenDotaCounts = () => createSelector(
-  [getPlayerID, state => state.openDotaCounts],
-    (playerID, openDotaCounts) => {
-      const countsObject = getFromID64(playerID, openDotaCounts);
+  [getPlayerID64, state => state.openDotaCounts],
+    (playerID64, openDotaCounts) => {
+      const countsObject = getFromID64(playerID64, openDotaCounts);
       if (countsObject && countsObject.game_mode) {
         const { game_mode } = countsObject;
         const winLose = Object.keys(game_mode)
@@ -50,4 +45,4 @@ export const makeOpenDotaCounts = () => createSelector(
     });
 
 export const makeOpenDotaHeroes = () => createSelector(
-  [getPlayerID, state => state.openDotaHeroes], getFromID64);
+  [getPlayerID64, state => state.openDotaHeroes], getFromID64);

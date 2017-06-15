@@ -24,7 +24,7 @@ const unknown = '???';
 // TODO include winrate
 function PerformanceInfo(props) {
   const { playedGames, openDotaPlayer, openDotaCounts } = props;
-  const playedDotaHours = playedGames ?
+  const playedDotaHours = playedGames && playedGames.games ?
    (playedGames.games.find(item => item.appid === 570).playtime_forever / 60)
    .toFixed(0).toString() :
     unknown;
