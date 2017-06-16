@@ -12,6 +12,7 @@ import App from './App';
 import reducer from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
+import './db';
 
 // test
 const { remote } = window.require('electron');

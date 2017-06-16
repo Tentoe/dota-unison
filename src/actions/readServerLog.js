@@ -9,6 +9,7 @@ import {
   fetchOpenDotaCounts,
   fetchOpenDotaHeroes,
   } from './';
+import { getComment } from '../db';
 
 const { remote } = window.require('electron');
 
@@ -16,7 +17,7 @@ const fs = remote.require('fs-extra');
 
 
 export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
-export const UPDATE_COMMENTS = 'UPDATE_COMMENTS';
+export const LOAD_COMMENT = 'LOAD_COMMENT';
 
 const serverLogFile = './test/server_log.test.txt';
 // '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
@@ -88,16 +89,26 @@ const fetchOpenDotaHeroesPrivate = players => (dispatch) => {
   // TODO when to fetch?
 };
 
-const updatePlayers = players => (dispatch) => {
-  dispatch({
-    type: UPDATE_PLAYERS,
-    payload: players,
-  });
-  // TODO get from database maybe restruct updatePlayers
-  dispatch({
-    type: UPDATE_COMMENTS,
-    payload: players,
-  });
+const updatePlayers = players => ({
+  type: UPDATE_PLAYERS,
+  payload: players,
+});
+
+const loadComment = wrappedComment => ({
+  type: LOAD_COMMENT,
+  payload: wrappedComment,
+});
+
+const loadComments = players => (dispatch) => {
+  players.forEach(player => getComment(player.steamID64)
+    .then(comment => dispatch(loadComment({ [player.steamID64]: comment }))));
+};
+
+const startPlayerUpdate = players => (dispatch) => {
+  // FIXME force order with promise and make sure hero ids exist
+  dispatch(updatePlayers(players));
+
+  dispatch(loadComments(players));
 
   const idString = getIdString(players);
   dispatch(fetchSummaries(idString));
@@ -115,5 +126,5 @@ export const readServerLog = (line = 0) => (dispatch) => {
     .then(filterLoopback)
     .then(array => array[(array.length - 1) - line])
     .then(extractGameData)
-    .then(players => dispatch(updatePlayers(players)));
+    .then(players => dispatch(startPlayerUpdate(players)));
 };

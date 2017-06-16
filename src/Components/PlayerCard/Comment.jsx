@@ -22,6 +22,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   downClick: () => { dispatch(downClickComment(ownProps.id)); },
 });
 
+const change = event => console.warn(event.target.value);
+
 function Comment({ comment, upClick, downClick }) {
   return (
     <div className="info-item">
@@ -33,7 +35,7 @@ function Comment({ comment, upClick, downClick }) {
             downClick={downClick}
           />
         </InputGroup.Addon>
-        <FormControl type="text" />
+        <FormControl type="text" defaultValue={comment.text} onChange={change} />
       </InputGroup>
     </div>
 

@@ -1,4 +1,4 @@
-import { UPDATE_PLAYERS, UPDATE_COMMENTS } from '../actions/readServerLog';
+import { UPDATE_PLAYERS, LOAD_COMMENT } from '../actions/readServerLog';
 import { UPCLICK_COMMENT, DOWNCLICK_COMMENT } from '../actions';
 
 const innitialState = {};
@@ -9,12 +9,10 @@ export const commentType = {
   NEGATIVE: 2,
 };
 
-
 const comments = (state = innitialState, { type, payload }) => {
   switch (type) {
-    case UPDATE_COMMENTS :
-      return payload.reduce((acc, player) =>
-        Object.assign(acc, { [player.steamID64]: { type: commentType.NEUTRAL } }), {});
+    case LOAD_COMMENT :
+      return { ...state, ...payload };
     case UPCLICK_COMMENT: {
       return {
         ...state,

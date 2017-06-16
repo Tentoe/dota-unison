@@ -13,6 +13,7 @@
     "gaze": "^1.1.2",
     "i18n-iso-countries": "^1.11.2",
     "jsbn": "^1.1.0",
+    "pouchdb": "^6.2.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
+    "electron-rebuild": "^1.5.11",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-config-airbnb-base": "^11.2.0",
