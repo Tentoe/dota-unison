@@ -53,3 +53,12 @@
 // //
 // if ({}) console.log('test');
 //
+//
+//
+//
+// const obj = { 1: '1', 2: '2' };
+// const obj2 = {};
+//
+// console.log(Object.keys(obj).every(val => val != 2));
+// console.log(Object.keys(obj));
+// console.log(Object.keys(obj2).every(val => val !== 4));

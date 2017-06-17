@@ -2,21 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Popover, Table } from 'react-bootstrap';
+import PrivateIcon from 'react-icons/lib/io/eye-disabled';
+import LeaveIcon from 'react-icons/lib/io/android-exit';
 
 import './InfoBlock.css';
-import { makeVAC, makeSummary, makeFriendList } from '../../selectors';
+import { makeVAC, makeSummary, makeFriendList, makeOpenDotaCounts } from '../../selectors';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 import steamLogo from './Steam_icon_logo.svg';
+import { leaverStatusToNumber } from '../../data';
 
 const makeMapStateToProps = () => {
   const getVAC = makeVAC();
   const getSummary = makeSummary();
   const getFriendList = makeFriendList();
+  const getOpenDotaCounts = makeOpenDotaCounts();
 
   const mapStateToProps = (state, props) => ({
     vac: getVAC(state, props),
     summary: getSummary(state, props),
     friendList: getFriendList(state, props),
+    counts: getOpenDotaCounts(state, props),
   });
   return mapStateToProps;
 };
@@ -46,7 +51,7 @@ TopLine.propTypes = {
 
 const Private = () => {
   const popover = (
-    <Popover id="privatePopoverID">
+    <Popover id="privatePopoverID" title="private">
       This players profile is private and no info can be gathered from it.
     </Popover>
   );
@@ -54,8 +59,8 @@ const Private = () => {
     <div>
       <CustomOverlayTrigger overlay={popover}>
         <span className="info-block-item info-block-warning">
-          <span className="glyphicon glyphicon-eye-close" />private
-      </span>
+          <PrivateIcon size={20} />
+        </span>
       </CustomOverlayTrigger>
     </div>
   );
@@ -81,8 +86,7 @@ const getVACPopover = (vac) => {
 };
 
 
-function InfoBlock(props) {
-  const { vac, summary, friendList } = props;
+function InfoBlock({ counts, vac, summary, friendList }) {
   return (
     <div className="info-block flex-item">
       <div className="info-block-inner flex-item medium-size-font">
@@ -90,17 +94,24 @@ function InfoBlock(props) {
           <TopLine friends={friendList} timecreated={summary.timecreated} /> :
           <Private />}
 
-        <div>{vac && vac.NumberOfVACBans ?
-          <CustomOverlayTrigger overlay={getVACPopover(vac)}>
-            <span className="info-block-item info-block-warning">
-              <span className="glyphicon glyphicon-warning-sign" />VAC
-            </span>
-          </CustomOverlayTrigger>
-
-        : null}<span> &#8291;</span></div>
+        <div>
+          {vac && vac.NumberOfVACBans ?
+            <CustomOverlayTrigger overlay={getVACPopover(vac)}>
+              <span className="info-block-item info-block-warning">
+                <span className="glyphicon glyphicon-warning-sign" />VAC
+              </span>
+            </CustomOverlayTrigger>
+            : null}
+          {counts && counts.leaver_status &&
+            !Object.keys(counts.leaver_status)
+              .every(val => val == leaverStatusToNumber.NONE) ?// eslint-disable-line eqeqeq
+                <span ><LeaveIcon size={20} /><span>1%</span></span>
+                : null}
+          <span> &#8291;</span>
+        </div>
       </div>
     </div>
-  );
+  );// TODO center items
 }
 InfoBlock.defaultProps = {
   vac: null,
@@ -111,6 +122,7 @@ InfoBlock.propTypes = {
   id: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
   vac: PropTypes.shape({}),
   summary: PropTypes.shape({}),
+  counts: PropTypes.shape({}),
   friendList: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
