@@ -45,7 +45,7 @@ export const downClickComment = id => (dispatch, getState) => {
   };
   dispatch(updateComments({ [steamID64]: newComment }));
   putComment(steamID64, newComment.type, newComment.text);
-};// TODO put logic from reducer in here
+};
 
 
 export const updateCommentText = (id, text) => (dispatch, getState) => {
