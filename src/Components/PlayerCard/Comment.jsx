@@ -5,7 +5,7 @@ import { FormControl, InputGroup } from 'react-bootstrap';
 
 import UpDown from './UpDown';
 import { makeComment } from '../../selectors';
-import { upClickComment, downClickComment } from '../../actions';
+import { upClickComment, downClickComment, updateCommentText } from '../../actions';
 import { commentType } from '../../reducers/comments';
 
 const makeMapStateToProps = () => {
@@ -20,11 +20,11 @@ const makeMapStateToProps = () => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   upClick: () => { dispatch(upClickComment(ownProps.id)); },
   downClick: () => { dispatch(downClickComment(ownProps.id)); },
+  dispatch,
 });
 
-const change = event => console.warn(event.target.value);
 
-function Comment({ comment, upClick, downClick }) {
+function Comment({ id, comment, upClick, downClick, dispatch }) {
   return (
     <div className="info-item">
       <InputGroup>
@@ -35,7 +35,11 @@ function Comment({ comment, upClick, downClick }) {
             downClick={downClick}
           />
         </InputGroup.Addon>
-        <FormControl type="text" defaultValue={comment.text} onChange={change} />
+        <FormControl
+          type="text"
+          defaultValue={comment.text}
+          onChange={event => dispatch(updateCommentText(id, event.target.value))}
+        />
       </InputGroup>
     </div>
 
@@ -49,6 +53,7 @@ Comment.propTypes = {
   comment: PropTypes.shape({ type: PropTypes.number.isRequired }),
   downClick: PropTypes.func.isRequired,
   upClick: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(Comment);

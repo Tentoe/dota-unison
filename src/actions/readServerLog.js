@@ -8,6 +8,7 @@ import {
   fetchOpenDotaPlayer,
   fetchOpenDotaCounts,
   fetchOpenDotaHeroes,
+  updateComments,
   } from './';
 import { getComment } from '../db';
 
@@ -17,7 +18,6 @@ const fs = remote.require('fs-extra');
 
 
 export const UPDATE_PLAYERS = 'UPDATE_PLAYERS';
-export const LOAD_COMMENT = 'LOAD_COMMENT';
 
 const serverLogFile = './test/server_log.test.txt';
 // '/home/kkurz/.steam/steam/steamapps/common/dota 2 beta/game/dota/server_log.txt';
@@ -94,15 +94,12 @@ const updatePlayers = players => ({
   payload: players,
 });
 
-const loadComment = wrappedComment => ({
-  type: LOAD_COMMENT,
-  payload: wrappedComment,
-});
 
 const loadComments = players => (dispatch) => {
   players.forEach(player => getComment(player.steamID64)
-    .then(comment => dispatch(loadComment({ [player.steamID64]: comment }))));
+    .then(comment => dispatch(updateComments({ [player.steamID64]: comment }))));
 };
+
 
 const startPlayerUpdate = players => (dispatch) => {
   // FIXME force order with promise and make sure hero ids exist

@@ -16,7 +16,7 @@ export const getComment = id64 => db.get(id64).catch((err) => {
   throw err;
 });
 
-export const updateComment = (id64, type, text) =>
+export const putComment = (id64, type, text) =>
   getComment(id64).then(old => db.put({
     ...old,
     text,
