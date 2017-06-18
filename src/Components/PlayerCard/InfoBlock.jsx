@@ -9,7 +9,7 @@ import './InfoBlock.css';
 import { makeVAC, makeSummary, makeFriendList, makeOpenDotaCounts } from '../../selectors';
 import CustomOverlayTrigger from './CustomOverlayTrigger';
 import steamLogo from './Steam_icon_logo.svg';
-import { leaverStatusToNumber } from '../../data';
+import { leaverStatusToNumber, leaverStatusToString } from '../../data';
 
 const makeMapStateToProps = () => {
   const getVAC = makeVAC();
@@ -85,8 +85,63 @@ const getVACPopover = (vac) => {
   );
 };
 
+const getAbandonPopover = (leaverStatus) => {
+  const keys = Object.keys(leaverStatus);
+  return (
+    <Popover id="leaverPopoverID" title="Leaver Status">
+      <Table striped bordered condensed hover >
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Games</th>
+            <th>Win</th>
+          </tr>
+        </thead>
+        <tbody>
+          {keys.map(key => (
+            <tr key={key}>
+              <td>{leaverStatusToString[key]}</td>
+              <td>{leaverStatus[key].games.toString()}</td>
+              <td>{leaverStatus[key].win.toString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Popover>
+  );
+};
+
+
+const abandonPecentage = (leaverStatus) => {
+  if (leaverStatus && Object.keys(leaverStatus) > 0) return '?';
+
+  const filteredKeys = Object.keys(leaverStatus)
+   .filter(val =>
+     val != leaverStatusToNumber.NONE &&// eslint-disable-line eqeqeq
+     val != leaverStatusToNumber.LEFT_SAVELY, // eslint-disable-line eqeqeq
+   );
+  const abandons = filteredKeys.reduce((acc, val) =>
+    acc + leaverStatus[val].games, 0);
+  return (abandons / (abandons + leaverStatus[leaverStatusToNumber.NONE].games)) * 100;
+};// TODO put in selectors
+
 
 function InfoBlock({ counts, vac, summary, friendList }) {
+  const abandons = counts && counts.leaver_status &&
+    !Object.keys(counts.leaver_status)
+      .every(val =>
+         val == leaverStatusToNumber.NONE ||// eslint-disable-line eqeqeq
+         val == leaverStatusToNumber.LEFT_SAVELY, // eslint-disable-line eqeqeq
+       ) ?
+        (
+          <CustomOverlayTrigger overlay={getAbandonPopover(counts.leaver_status)}>
+            <span >
+              <LeaveIcon size={20} />
+              <span>{abandonPecentage(counts.leaver_status).toFixed(1)}%</span>
+            </span>
+          </CustomOverlayTrigger>
+      )
+        : null;
   return (
     <div className="info-block flex-item">
       <div className="info-block-inner flex-item medium-size-font">
@@ -102,11 +157,7 @@ function InfoBlock({ counts, vac, summary, friendList }) {
               </span>
             </CustomOverlayTrigger>
             : null}
-          {counts && counts.leaver_status &&
-            !Object.keys(counts.leaver_status)
-              .every(val => val == leaverStatusToNumber.NONE) ?// eslint-disable-line eqeqeq
-                <span ><LeaveIcon size={20} /><span>1%</span></span>
-                : null}
+          {abandons}
           <span> &#8291;</span>
         </div>
       </div>

@@ -42,7 +42,7 @@ export const lobbyType =
 export const leaverStatusToNumber =
   {
     NONE: 0,
-    DISCONNECTED: 1,
+    LEFT_SAVELY: 1,
     DISCONNECTED_TOO_LONG: 2,
     ABANDONED: 3,
     AFK: 4,
@@ -53,7 +53,7 @@ export const leaverStatusToNumber =
 export const leaverStatusToString =
   {
     0: 'NONE',
-    1: 'DISCONNECTED',
+    1: 'LEFT_SAVELY',
     2: 'DISCONNECTED_TOO_LONG',
     3: 'ABANDONED',
     4: 'AFK',
