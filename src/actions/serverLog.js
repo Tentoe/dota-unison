@@ -1,12 +1,12 @@
 import { BigInteger } from 'jsbn';
 import _ from 'lodash';
 
+import { updateComments } from './';
 import {
-  fetchOpenDotaPlayer,
-  fetchOpenDotaCounts,
-  fetchOpenDotaHeroes,
-  updateComments,
-  } from './';
+    fetchOpenDotaPlayer,
+    fetchOpenDotaCounts,
+    fetchOpenDotaHeroes,
+  } from './openDotaAPI';
 import {
     fetchSummaries,
     fetchVAC,

@@ -1,5 +1,6 @@
+import { SUCCESS_SUFIX } from '../actions';
 import { UPDATE_PLAYERS } from '../actions/serverLog';
-import { FETCH_OPENDOTAHEROES, SUCCESS_SUFIX } from '../actions';
+import { FETCH_OPENDOTAHEROES } from '../actions/openDotaAPI';
 
 const innitialState = {};
 
