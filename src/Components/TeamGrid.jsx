@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './TeamGrid.css';
@@ -18,9 +19,9 @@ class TeamGrid extends React.Component {
   }
 
   render() {
-    const slotIDs = (new Array(10)).fill(0).map((val, index) => index);
-    const radiantPlayers = slotIDs.slice(0, 5);
-    const direPlayers = slotIDs.slice(5, 10);
+    const slotIDs = _.times(10);
+    const radiantPlayers = _.slice(slotIDs, 0, 5);
+    const direPlayers = _.slice(slotIDs, 5, 10);
     return (
       <div className="container-fluid">
 
