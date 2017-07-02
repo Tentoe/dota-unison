@@ -1,4 +1,5 @@
 import { BigInteger } from 'jsbn';
+import _ from 'lodash';
 
 import {
   fetchSummaries,
@@ -59,13 +60,9 @@ function extractGameData(line) {
   .map(item => getPlayer(item, partyArray));
 }
 
-function joinID64(acc, player, i) {
-  const separator = i === 0 ? '' : ','; // no separator on first value
-  return `${acc}${separator}${player.steamID64.toString()}`;
-}
 
 function getIdString(players) {
-  return players.reduce(joinID64, '');
+  return _.join(players.reduce((acc, player) => _.concat(acc, player.steamID64.toString()), []), ',');
 }
 
 const fetchFriendLists = players => (dispatch) => {
