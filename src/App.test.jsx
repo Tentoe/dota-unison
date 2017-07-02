@@ -9,7 +9,7 @@ import App from './App';
 import reducer from './reducers';
 
 jest.mock('./flags');
-jest.mock('./actions/readServerLog');
+jest.mock('./actions/serverLog');
 
 
 const middleware = applyMiddleware(thunk);

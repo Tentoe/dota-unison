@@ -1,5 +1,6 @@
-import { FETCH_SUMMARIES, SUCCESS_SUFIX } from '../actions';
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
+import { SUCCESS_SUFIX } from '../actions';
+import { FETCH_SUMMARIES } from '../actions/steamAPI';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
 
 const innitialState = {};
 

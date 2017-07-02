@@ -1,4 +1,5 @@
-import { FETCH_HEROES, SUCCESS_SUFIX } from '../actions';
+import { SUCCESS_SUFIX } from '../actions';
+import { FETCH_HEROES } from '../actions/steamAPI';
 
 const innitialState = null;
 

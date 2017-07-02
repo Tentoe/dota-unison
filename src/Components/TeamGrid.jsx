@@ -6,8 +6,8 @@ import './TeamGrid.css';
 
 import PlayerCard from './PlayerCard/';
 
-import { fetchHeroes } from '../actions';
-import { readServerLog } from '../actions/readServerLog';
+import { fetchHeroes } from '../actions/steamAPI';
+import { readServerLog } from '../actions/serverLog';
 
 
 class TeamGrid extends React.Component {

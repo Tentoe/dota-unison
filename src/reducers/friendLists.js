@@ -1,5 +1,6 @@
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
-import { FETCH_FRIEDNLIST, SUCCESS_SUFIX } from '../actions';
+import { SUCCESS_SUFIX } from '../actions';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
+import { FETCH_FRIEDNLIST } from '../actions/steamAPI';
 
 const innitialState = {};
 

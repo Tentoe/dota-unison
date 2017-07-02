@@ -1,4 +1,4 @@
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
 import { FETCH_OPENDOTACOUNTS, SUCCESS_SUFIX } from '../actions';
 
 const innitialState = {};

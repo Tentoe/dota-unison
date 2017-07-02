@@ -1,4 +1,4 @@
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
 import { UPDATE_COMMENTS } from '../actions';
 
 const innitialState = {};

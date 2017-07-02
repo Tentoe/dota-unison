@@ -1,5 +1,6 @@
-import { FETCH_VAC, SUCCESS_SUFIX } from '../actions';
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
+import { SUCCESS_SUFIX } from '../actions';
+import { FETCH_VAC } from '../actions/steamAPI';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
 
 const innitialState = {};
 

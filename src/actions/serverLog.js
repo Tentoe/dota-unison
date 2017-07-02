@@ -2,15 +2,17 @@ import { BigInteger } from 'jsbn';
 import _ from 'lodash';
 
 import {
-  fetchSummaries,
-  fetchVAC,
-  fetchFriendlist,
-  fetchPlayedGames,
   fetchOpenDotaPlayer,
   fetchOpenDotaCounts,
   fetchOpenDotaHeroes,
   updateComments,
   } from './';
+import {
+    fetchSummaries,
+    fetchVAC,
+    fetchFriendlist,
+    fetchPlayedGames,
+  } from './steamAPI';
 import { getComment } from '../db';
 
 const { remote } = window.require('electron');
@@ -59,7 +61,6 @@ function extractGameData(line) {
   return lobbyString.match(steamID).map(extractSteamID)
   .map(item => getPlayer(item, partyArray));
 }
-
 
 function getIdString(players) {
   return _.join(players.reduce((acc, player) => _.concat(acc, player.steamID64.toString()), []), ',');

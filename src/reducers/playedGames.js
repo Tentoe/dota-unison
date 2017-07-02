@@ -1,5 +1,6 @@
-import { UPDATE_PLAYERS } from '../actions/readServerLog';
-import { FETCH_PLAYEDGAMES, SUCCESS_SUFIX } from '../actions';
+import { SUCCESS_SUFIX } from '../actions';
+import { UPDATE_PLAYERS } from '../actions/serverLog';
+import { FETCH_PLAYEDGAMES } from '../actions/steamAPI';
 
 const innitialState = {};
 
