@@ -5,7 +5,7 @@ import { FormControl, InputGroup } from 'react-bootstrap';
 
 import UpDown from './UpDown';
 import { makeComment } from '../../selectors';
-import { upClickComment, downClickComment, updateCommentText } from '../../actions';
+import { upClickComment, downClickComment, updateCommentText } from '../../actions/comments';
 import { commentType } from '../../reducers/comments';
 
 const makeMapStateToProps = () => {

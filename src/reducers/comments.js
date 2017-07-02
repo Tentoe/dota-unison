@@ -1,5 +1,5 @@
 import { UPDATE_PLAYERS } from '../actions/serverLog';
-import { UPDATE_COMMENTS } from '../actions';
+import { UPDATE_COMMENTS } from '../actions/comments';
 
 const innitialState = {};
 

@@ -1,7 +1,7 @@
 import { BigInteger } from 'jsbn';
 import _ from 'lodash';
 
-import { updateComments } from './';
+import { updateComments } from './comments';
 import {
     fetchOpenDotaPlayer,
     fetchOpenDotaCounts,
