@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormControl, InputGroup } from 'react-bootstrap';
+import _ from 'lodash';
+
 
 import UpDown from './UpDown';
 import { makeComment } from '../../selectors';
@@ -25,6 +27,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 
 function Comment({ id, comment, upClick, downClick, dispatch }) {
+  const onChange = _.debounce(
+    value => dispatch(updateCommentText(id, value)),
+     300, { leading: false, trailing: true });
+  const onChangeWrapper = (event) => {
+    const { value } = event.target; // value wont be available later
+    onChange(value);
+  };
   return (
     <div className="info-item">
       <InputGroup>
@@ -38,7 +47,7 @@ function Comment({ id, comment, upClick, downClick, dispatch }) {
         <FormControl
           type="text"
           defaultValue={comment.text}
-          onChange={event => dispatch(updateCommentText(id, event.target.value))}
+          onChange={onChangeWrapper}
         />
       </InputGroup>
     </div>
