@@ -19,9 +19,8 @@ class TeamGrid extends React.Component {
   }
 
   render() {
-    const slotIDs = _.times(10);
-    const radiantPlayers = _.slice(slotIDs, 0, 5);
-    const direPlayers = _.slice(slotIDs, 5, 10);
+    const radiantPlayers = _.range(0, 5);
+    const direPlayers = _.range(5, 10);
     return (
       <div className="container-fluid">
 
