@@ -1,3 +1,4 @@
+import _ from 'lodash';
 
 export const gameMode =
   {
@@ -39,17 +40,6 @@ export const lobbyType =
   };
 
 
-export const leaverStatusToNumber =
-  {
-    NONE: 0,
-    LEFT_SAVELY: 1,
-    DISCONNECTED_TOO_LONG: 2,
-    ABANDONED: 3,
-    AFK: 4,
-    NEVER_CONNECTED: 5,
-    NEVER_CONNECTED_TOO_LONG: 6,
-  };
-
 export const leaverStatusToString =
   {
     0: 'NONE',
@@ -60,6 +50,8 @@ export const leaverStatusToString =
     5: 'NEVER_CONNECTED',
     6: 'NEVER_CONNECTED_TOO_LONG',
   };
+
+export const leaverStatusToNumber = _.invert(leaverStatusToString);
 
 export const regions =
   {
